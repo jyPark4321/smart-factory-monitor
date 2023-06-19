@@ -1,0 +1,23 @@
+{
+  "name": "smartfactory-monitor",
+  "version": "1.0.0",
+  "description": "웹으로 스마트팩토리 생산데이터를 조회하는 졸업 프로젝트 작품",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihh0/smartfactory-monitor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ihh0/smartfactory-monitor/issues"
+  },
+  "homepage": "https://github.com/ihh0/smartfactory-monitor#readme",
+  "dependencies": {
+    "sqlite3": "^5.1.6"
+  }
+}
