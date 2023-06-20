@@ -8,6 +8,7 @@ import numpy as np
 from tqdm import tqdm
 import sqlite3
 import json
+import sys
 
 def processData(start_date, end_date):
 
@@ -424,4 +425,5 @@ def processData(start_date, end_date):
     print('\n\n데이터 전처리 완료\n\n')
 
 if (__name__ == '__main__'):
-    processData('2021-01-01', '2021-06-01')
+  args = sys.argv[1:]
+  processData(args[0], args[1])

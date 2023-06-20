@@ -9,11 +9,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>대시보드 - 모니터링 시스템</title>
+        <title>전처리 요청 - 모니터링 시스템</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <script src="js/tables.js"></script>
+        <script src="js/request.js"></script>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -48,45 +48,20 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">원본 데이터</h1>
+                        <h1 class="mt-4">전처리 요청</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">대시보드</a></li>
-                            <li class="breadcrumb-item active">원본 데이터</li>
+                            <li class="breadcrumb-item active">전처리 요청</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                원본 데이터
-                                <div class="text-muted" id="processTimeRange">xx~xx</div>
-                            </div>
-                            <div class="card-body">
-                                <table id="datatables1">
-                                    <thead>
-                                        <tr>
-                                            <th>영업납기</th>
-                                            <th>중산도면</th>
-                                            <th>단가</th>
-                                            <th>선급</th>
-                                            <th>수량</th>
-                                            <th>제조 공정</th>
-                                            <th>일간 생산량</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>영업납기</th>
-                                            <th>중산도면</th>
-                                            <th>단가</th>
-                                            <th>선급</th>
-                                            <th>수량</th>
-                                            <th>제조 공정</th>
-                                            <th>일간 생산량</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody id="tables_table">
-                                        
-                                    </tbody>
-                                </table>
+                                날짜 입력
+                                <form>
+                                    시작 날짜 : <input type="date" name="startdate" class="mt-4"><br/>
+                                    종료 날짜 : <input type="date" name="enddate" class="mt-2">
+                                  </form>
+                                <button type="button" class="btn btn-secondary mt-4 mb-2" id="request_button">작업 시작</button>
                             </div>
                         </div>
                     </div>

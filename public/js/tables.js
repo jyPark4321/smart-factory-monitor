@@ -1,13 +1,6 @@
 const query = 'SELECT time_range, data FROM data_output ORDER BY date DESC LIMIT 1';
 const url = '/data?query=' + encodeURIComponent(query);
 
-window.addEventListener('DOMContentLoaded', event => {
-    const datatablesSimple1 = document.getElementById('datatables1');
-    if (datatablesSimple1) {
-        new simpleDatatables.DataTable(datatablesSimple1);
-    }
-});
-
 fetch(url)
   .then(response => response.json())
   .then(data => {
@@ -39,6 +32,11 @@ fetch(url)
     const timerange = document.getElementById('processTimeRange');
     const time_range_json = JSON.parse(data[0].time_range);
     timerange.textContent = time_range_json['start_date']+' ~ '+time_range_json['end_date'];
+
+    const datatablesSimple = document.getElementById('datatables1');
+    if (datatablesSimple) {
+        new simpleDatatables.DataTable(datatablesSimple);
+    }
   })
   .catch(error => {
     console.error('오류 발생:', error);
