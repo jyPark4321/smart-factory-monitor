@@ -202,8 +202,7 @@ def processData(start_date, end_date):
     # ‘selection()’ 함수는 임의의 해 조합을 crossover 하기 위해 한 세대 조합해 중 가장
     # 좋은 성능을 가진 조합을 찾는 과정이다. ‘k’는 임의의 해에서 crossover로 넘길 변수
     # 개수이며, 전체 임의의 해 조합(pop) 중 50%이다. 본 가이드북에서는 토너먼트 방법
-    # 을 사용하였으며, 이는 임의로 뽑은 임의의 해 중 가장 좋은 해만을 다음으로 넘기는
-    # 것이다.
+    # 을 사용하였으며, 이는 임의로 뽑은 임의의 해 중 가장 좋은 해만을 다음으로 넘기는 것이다.
     def selection(pop, scores): #n_pop은 한 세대를 구성하는 염색체 수이며, 하이퍼파라미터 값
       k = round(n_pop*0.5)
       selection_ix = randint(len(pop))
@@ -214,7 +213,7 @@ def processData(start_date, end_date):
     
     # ‘crossover()’는 ‘select()’ 된 함수에서 두 쌍을 선택, 특정 비율 (r_cross)만큼을 교차
     # 시켜 재조합하여 새로운 임의의 해를 만드는 함수이다.
-    # 본 가이드북 문제는 특정 i, j, t 만이 정수를 해를 가질 수 있으므로 (임의의 item i는
+    # 이 코드의 경우 특정 i, j, t 만이 정수를 해를 가질 수 있으므로 (임의의 item i는
     # 특정 날짜 t, 특정 machine j로만 생산 가능) 임의로 교차를 할 수 없다. 따라서 해를
     # 가질 수 있는 index를 vaild_index 변수에 저장하고 (crossover_(1)), 이 중 특정 비
     # 율만큼 index를 선택하여 교차시킨다. (crossover_(2))
@@ -385,8 +384,6 @@ def processData(start_date, end_date):
           solution_[i, j, t] = round(best[i, j, t]*dit[i, t])
     sol = pd.DataFrame.from_dict(solution_, orient='index').reset_index()
     sol.columns = ['(item, machine, time)','qty']
-    # sol.to_csv('GA_solution.csv', index=False)
-    # sol = pd.read_csv('GA_solution.csv')
     sol = sol[sol['qty']>0]
     print(sol)
 

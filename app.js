@@ -40,6 +40,7 @@ app.post('/start-db-preprocessing', function(req, res) {
   const startDate = req.body.startDate;
   const endDate = req.body.endDate;
 
+  console.log("전처리 시작")
   const command = `python ${pythonScriptPath} ${startDate} ${endDate}`;
   
   exec('python data/processData.py', (error, stdout, stderr) => {
@@ -49,7 +50,7 @@ app.post('/start-db-preprocessing', function(req, res) {
       return;
     }
     // stdout에서 파이썬 코드 실행 결과를 처리
-    console.log(`전처리가 완료되었습니다.`);
+    console.log(`전처리 작업 요청에 성공하였습니다.`);
   });
   res.sendStatus(200);
 });

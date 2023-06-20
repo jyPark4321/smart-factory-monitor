@@ -210,7 +210,6 @@ def saveDataSet():
   print("데이터 품질 지수 : %.2f%% "%(quality_total))
 
 
-
   ###########################################################
   ##### [단계 3] 데이터 종류 및 개수 확인
   ###########################################################
@@ -225,9 +224,8 @@ def saveDataSet():
   ##### 불필요한 데이터 제거
 
   # '.dropna() 함수는 값이 없는 행 (axis=0) 또는 열 (axis=1)을 제거해 주는 함수이다. 
-  # inplace=True 옵션은 따로 데이터프레임을 지정해 저장하지 않고 바로 적용된다. 본 
-  # 분석에서는 모든 데이터 (machine_info.csv, order_info.csv)에 대해 값이 없는 행을 
-  # 모두 제거하였다.
+  # inplace=True 옵션은 따로 데이터프레임을 지정해 저장하지 않고 바로 적용된다.
+  # 모든 데이터 (machine_info.csv, order_info.csv)에 대해 값이 없는 행을 모두 제거하였다.
   n_before_preprocess =len(machine_info)
   machine_info.dropna(axis=0,inplace=True)
   n_after_preprocess =len(machine_info)

@@ -8,7 +8,7 @@ function startDBPreprocessing() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
             var response = JSON.parse(xhr.responseText);
-            alert('DB 전처리 작업이 시작되었습니다.');
+            alert('DB 전처리 작업이 완료되었습니다.');
           } else {
             alert('DB 전처리 작업을 시작할 수 없습니다.');
         }
@@ -24,7 +24,7 @@ function startDBPreprocessing() {
   
     // 요청 전송
     xhr.send(params);
+    alert('DB 전처리 작업 요청이 완료되었습니다.');
 }
-
 const button = document.getElementById('request_button')
 button.addEventListener('click', startDBPreprocessing)
