@@ -1,21 +1,23 @@
-console.log('dashboard.js start');
-// SQLite 데이터베이스 파일 로드
-const xhr = new XMLHttpRequest();
-xhr.open('GET', './data/database.db', true);
-console.log('db open');
-xhr.responseType = 'arraybuffer';
-xhr.onload = function () {
-    const data = new Uint8Array(xhr.response);
-    const db = new SQL.Database(data);
+const sqlite3 = require('sqlite3').verbose();
+const dbPath = '../data/database.db';
 
-    // 데이터베이스 쿼리 실행
-    const query = 'SELECT * FROM data_output ORDER BY created_at DESC LIMIT 1';
-    const result = db.exec(query);
-    const row = result[0].values[0];
+// 데이터베이스 연결
+const db = new sqlite3.Database(dbPath);
 
-    // 결과 처리
-    console.log(row);
+// 쿼리 실행
+db.serialize(() => {
+  db.all('SELECT * FROM data_output ORDER BY date DESC LIMIT 1', (err, rows) => {
+    if (err) {
+      console.error(err.message);
+      return;
+    }
+    
+    // 결과 출력
+    rows.forEach((row) => {
+      console.log(row);
+    });
+  });
+});
 
-    // 데이터베이스 연결 종료
-    db.close();
-};
+// 데이터베이스 연결 종료
+db.close();
