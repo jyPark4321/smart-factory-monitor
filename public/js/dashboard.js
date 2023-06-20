@@ -5,12 +5,11 @@ fetch(url)
   .then(response => response.json())
   .then(data => {
     console.log(data);
-    const tableBody = document.getElementById('datatablesDashboard').getElementsByTagName('tbody')[0];
+    const tableBody = document.getElementById('datatables').getElementsByTagName('tbody')[0];
     tableBody.innerHTML = '';
 
     const sol = JSON.parse(data[0].sol);
     var sol_ = [];
-    console.log(sol['(item, machine, time)']);
     for (const index in sol.qty) {
       sol_ = sol['(item, machine, time)'][index]
 
@@ -25,6 +24,10 @@ fetch(url)
       timeCell.textContent = sol_[2];
       qtyCell.textContent = sol.qty[index];
     }
+
+    const timerange = document.getElementById('processTimeRange');
+    const time_range_json = JSON.parse(data[0].time_range);
+    timerange.textContent = time_range_json['start_date']+' ~ '+time_range_json['end_date'];
   })
   .catch(error => {
     console.error('오류 발생:', error);
