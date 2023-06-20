@@ -7,9 +7,11 @@ import pandas as pd
 import datetime
 import sqlite3
 import json
+import os
 
 def saveDataSet():
   ##### 데이터 불러오기
+  os.chdir(os.path.dirname(__file__))
   machine_info = pd.read_csv('machine_info.csv', encoding='cp949')
   order_info = pd.read_csv('order_info.csv', encoding='cp949')
 

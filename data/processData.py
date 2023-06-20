@@ -386,7 +386,8 @@ def processData(start_date, end_date):
     sol.columns = ['(item, machine, time)','qty']
     # sol.to_csv('GA_solution.csv', index=False)
     # sol = pd.read_csv('GA_solution.csv')
-    print(sol[sol['qty']>0])
+    sol = sol[sol['qty']>0]
+    print(sol)
 
     process_end = moduletime.time()
     process_time = str(round(process_end - process_start, 2))
@@ -403,9 +404,14 @@ def processData(start_date, end_date):
     
     # 저장할 데이터
     date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    data_json = dataset.to_json()
-    sol_json = sol.to_json()
     timerange_json = json.dumps(time_range)
+    
+    dataset['time'] = dataset['time'].apply(lambda x: str(x))
+    data_json = dataset.to_json()
+    
+    
+    sol['(item, machine, time)'] = sol['(item, machine, time)'].apply(lambda x: (x[0], x[1], str(x[2])))
+    sol_json = sol.to_json()
     
     # 삽입
     cursor.execute("INSERT INTO data_output (date, time_range, process_time, data, sol) VALUES (?, ?, ?, ?, ?)",
