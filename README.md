@@ -2,8 +2,10 @@
 스마트팩토리의 생산 데이터 및 계획을 관리하는 node.js 기반 웹페이지
 
 
+
 ## 개발 기간
 23.04.20~23.06.20
+
 
 
 ## 실행 방법
@@ -11,17 +13,25 @@
 - Node.js
 - Python
 
-이 저장소를 클론합니다:
+
+이 저장소를 클론합니다.
+
 `git clone https://github.com/ihh0/smartfactory-monitor.git`
 
-클론한 저장소로 이동해 프로젝트 종속성을 설치합니다:
+
+클론한 저장소로 이동해 프로젝트 종속성을 설치합니다.
+
 `cd smartfactory-monitor`
 `npm install`
 
-프로젝트를 실행합니다:
+
+프로젝트를 실행합니다.
+
 `node app.js`
 
+
 웹 브라우저에서 http://localhost:3000으로 접속하여 웹사이트를 확인합니다.
+
 
 
 ## 주요 기능
